@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Remover Categoria</title>
+</head>
+<body>
+	<div layout:fragment="conteudo">
+		<div th:replace="~{layout/fragments/sidebar :: sidebar}"></div>
+
+		<!-- conteudo principal -->
+		<main class="mt-5 p-4 pt-5">
+			<h1>Remover</h1>
+			<h2>Você tem certeza que quer remover a produto:</h2>
+			<div class="mb-3">
+				<label class="form-label">
+					Código:
+					<span th:text="${produtos.id}"></span>
+				</label>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">
+					Produto:
+					<span th:text="${produtos.produto}"></span>
+				</label>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">
+					Imagem:
+					<img width="20%" th:src="*{produtos.img}">
+				</label>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">
+					Categoria
+					<span th:text="${produtos.categoria.categoria}"></span>
+				</label>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">
+					Situação:
+					<span th:text="${produtos.situacao}"></span>
+				</label>
+			</div>
+			<form th:action="@{/produtos/remover}" method="post">
+				<input type="hidden" name="id" th:value="${produtos.id}">
+				<input type="hidden" name="produto" th:value="${produtos.produto}">
+				<input type="hidden" name="img" th:value="${produtos.img}">
+				<input type="hidden" name="categoria.id" th:value="${produtos.categoria.id}">
+				<input type="hidden" name="categoria.categoria" th:value="${produtos.categoria.categoria}">
+				<input type="hidden" name="produtos.situacao" th:value="${produtos.situacao}">
+				<button type="submit" class="btn btn-danger">Remover</button>
+			</form>
+		</main>
+	</div>
+</body>
+</html>

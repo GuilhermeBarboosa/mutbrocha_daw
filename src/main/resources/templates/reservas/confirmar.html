@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Alterar Categoria</title>
+</head>
+<body>
+	<div layout:fragment="conteudo">
+		<div th:replace="~{layout/fragments/sidebar :: sidebar}"></div>
+
+		<!-- conteudo principal -->
+		<main class="mt-5 p-4 pt-5">
+			<h2>Confirmar venda</h2>
+			<form th:action="@{/reserva/confirmavendadoproduto}" method="post" th:object="${reservaProduto}">
+				<div class="mb-3">
+					<label for="id" class="form-label">Código: <span th:text="${reservaProduto.id}"></span></label>
+				</div>
+				<input type="hidden" name="id" th:value="${reservaProduto.id}">
+
+				<div class="mb-3">
+					<label for="produto" class="form-label">Produto: <span th:text="${reservaProduto.produto.produto}"></span></label>
+				</div>
+				<input type="hidden" name="codigoProduto" th:value="${reservaProduto.produto.id}">
+
+				<div class="mb-3">
+					<label for="reserva" class="form-label">Reserva: <span th:text="${reservaProduto.reserva.user.username}"></span></label>
+				</div>
+				<input type="hidden" name="codigoReserva" th:value="${reservaProduto.reserva.id}">
+
+
+				<button type="submit" class="btn btn-primary">Confirmar venda</button>
+			</form>
+		</main>
+	</div>
+</body>
+</html>

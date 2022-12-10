@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Pesquisar Categoria</title>
+</head>
+<body>
+	<div layout:fragment="conteudo">
+		<div th:replace="~{layout/fragments/sidebar :: sidebar}"></div>
+
+		<!-- conteudo principal -->
+		<main class="mt-5 p-4 pt-5">
+			<h2>Pesquisar</h2>
+			<form th:action="@{/usuario/pesquisar}" method="get">
+
+				<div th:fragment="campospesquisarusuários">
+
+					<div class="mb-3">
+						<label for="id" class="form-label">Código</label> <input
+							type="number" class="form-control" name="id" id="id"
+							placeholder="Digite o código do usuário">
+					</div>
+					<div class="mb-3">
+						<label for="nome" class="form-label">Nome</label> <input
+							type="text" class="form-control" name="nome" id="nome"
+							placeholder="Digite o nome do usuário">
+					</div>
+					<div class="mb-3">
+						<label for="username" class="form-label">Username</label> <input
+							type="text" class="form-control" name="username" id="username"
+							placeholder="Digite o username do usuário">
+					</div>
+					
+					<div class="mb-3">
+						<label for="roles" class="form-label">Tipo de usuário</label> <select
+							class="form-select" name="roles">
+									<option value="" selected="selected">Não selecionada</option>
+							<option
+								th:each="roles : ${T(web.mutbrocha.model.Roles).values()}"
+								th:value="${roles}" th:text="${roles.descricao}"></option>
+						</select>
+					</div>
+
+
+
+					<button type="submit" class="btn btn-primary">Pesquisar</button>
+
+				</div>
+			</form>
+		</main>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Remover Categoria</title>
+</head>
+<body>
+	<div layout:fragment="conteudo">
+		<div th:replace="~{layout/fragments/sidebar :: sidebar}"></div>
+
+		<!-- conteudo principal -->
+		<main class="mt-5 p-4 pt-5">
+			<h1>Remover</h1>
+			<h2>Você tem certeza que quer remover a usuário:</h2>
+			<div class="mb-3">
+				<label class="form-label">
+					Código:
+					<span th:text="${user.id}"></span>
+				</label>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">
+					Nome:
+					<span th:text="${user.nome}"></span>
+				</label>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">
+					Username:
+					<span th:text="${user.username}"></span>
+				</label>
+			</div>
+			<form th:action="@{/usuario/remover}" method="post">
+				<input type="hidden" name="id" th:value="${user.id}">
+				<input type="hidden" name="nome" th:value="${user.nome}">
+				<input type="hidden" name="username" th:value="${user.username}">
+				<button type="submit" class="btn btn-danger">Remover</button>
+			</form>
+		</main>
+	</div>
+</body>
+</html>

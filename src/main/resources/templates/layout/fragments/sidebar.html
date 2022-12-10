@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<!-- offcanvas sidebar -->
+	<div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="sidebar"
+		th:fragment="sidebar">
+		<div class="offcanvas-body">
+			<nav class="navbar-dark">
+				<ul class="navbar-nav">
+					<li>
+						<div class="small fw-bold text-uppercase px-3 mt-3">Opções</div>
+					</li>
+					<li class="my-2">
+						<hr class="dropdown-toggle-split" />
+					</li>
+
+					<div sec:authorize="hasRole('ROLE_ADM')">
+						<!-- 1o elemento -->
+						<li><a class="nav-link px-3 sidebar-link text-white" data-bs-toggle="collapse" href="#produtos">
+								<span class="me-2">
+									<i class="bi bi-shop"></i>
+								</span> <span>Produtos</span> <span class="ms-auto"> <span class="right-icon"> <i
+											class="bi bi-chevron-down"></i>
+									</span>
+								</span>
+							</a>
+
+							<div class="collapse" id="produtos"
+								th:classappend=" ${#strings.startsWith(#request.requestURI, '/produtos')} ? show">
+								<ul class="navbar-nav ps-3">
+									<li><a th:href="@{/produtos/cadastrar}" class="nav-link px-3"> <span class="me-2">
+												<i class="bi bi-plus-square text-white"></i>
+											</span> <span class="text-white">Cadastrar</span>
+										</a></li>
+									<li><a th:href="@{/produtos/abrirpesquisar}" class="nav-link px-3"> <span
+												class="me-2"> <i class="bi bi-search text-white"></i>
+											</span> <span class="text-white">Pesquisar</span>
+										</a></li>
+								</ul>
+							</div>
+						</li>
+
+						<!-- 2o elemento -->
+						<li><a class="nav-link px-3 sidebar-link text-white" data-bs-toggle="collapse" href="#reserva">
+								<span class="me-2">
+									<i class="bi bi-receipt"></i>
+								</span> <span>Reserva</span> <span class="ms-auto"> <span class="right-icon"> <i
+											class="bi bi-chevron-down"></i>
+									</span>
+								</span>
+							</a>
+
+							<div class="collapse" id="reserva"
+								th:classappend=" ${#strings.startsWith(#request.requestURI, '/reserva')} ? show">
+								<ul class="navbar-nav ps-3">
+									<li><a th:href="@{/reserva/cadastrar}" class="nav-link px-3"> <span class="me-2"> <i
+													class="bi bi-plus-square text-white"></i>
+											</span> <span class="text-white">Cadastrar</span>
+										</a></li>
+									<li><a th:href="@{/reserva/abrirpesquisar}" class="nav-link px-3"> <span
+												class="me-2"> <i class="bi bi-search text-white"></i>
+											</span> <span class="text-white">Pesquisar</span>
+										</a></li>
+								</ul>
+							</div>
+						</li>
+
+						<!-- 3o elemento -->
+						<li><a class="nav-link px-3 sidebar-link text-white" data-bs-toggle="collapse"
+								href="#categoria"> <span class="me-2"> <i class="bi bi-tag"></i>
+								</span> <span>Categoria</span> <span class="ms-auto"> <span class="right-icon"> <i
+											class="bi bi-chevron-down"></i>
+									</span>
+								</span>
+							</a>
+
+							<div class="collapse" id="categoria"
+								th:classappend=" ${#strings.startsWith(#request.requestURI, '/categoria')} ? show">
+								<ul class="navbar-nav ps-3">
+									<li><a th:href="@{/categorias/cadastrar}" class="nav-link px-3"> <span class="me-2">
+												<i class="bi bi-plus-square text-white"></i>
+											</span> <span class="text-white">Cadastrar</span>
+										</a></li>
+									<li><a th:href="@{/categorias/abrirpesquisar}" class="nav-link px-3"> <span
+												class="me-2"> <i class="bi bi-search text-white"></i>
+											</span> <span class="text-white">Pesquisar</span>
+										</a></li>
+								</ul>
+							</div>
+						</li>
+
+						<!-- 4o elemento -->
+						<li><a class="nav-link px-3 sidebar-link text-white" data-bs-toggle="collapse" href="#usuario">
+								<span class="me-2"> <i class="bi bi-person"></i>
+								</span> <span>Usuário</span> <span class="ms-auto"> <span class="right-icon"> <i
+											class="bi bi-chevron-down"></i>
+									</span>
+								</span>
+							</a>
+
+							<div class="collapse" id="usuario"
+								th:classappend=" ${#strings.startsWith(#request.requestURI, '/usuario')} ? show">
+								<ul class="navbar-nav ps-3">
+									<li><a th:href="@{/usuario/cadastrar}" class="nav-link px-3"> <span class="me-2"> <i
+													class="bi bi-plus-square text-white"></i>
+											</span> <span class="text-white">Cadastrar</span>
+										</a></li>
+									<li><a th:href="@{/usuario/abrirpesquisar}" class="nav-link px-3"> <span
+												class="me-2"> <i class="bi bi-search text-white"></i>
+											</span> <span class="text-white">Pesquisar</span>
+										</a></li>
+								</ul>
+							</div>
+						</li>
+
+
+						<!-- 4o elemento -->
+						<li><a class="nav-link px-3 sidebar-link text-white" data-bs-toggle="collapse" href="#print">
+								<span class="me-2"> <i class="bi bi-printer"></i>
+								</span> <span>Relatórios</span> <span class="ms-auto"> <span class="right-icon"> <i
+											class="bi bi-chevron-down"></i>
+									</span>
+								</span>
+							</a>
+
+							<div class="collapse" id="print"
+								th:classappend=" ${#strings.startsWith(#request.requestURI, '/print')} ? show">
+								<ul class="navbar-nav ps-3">
+									<li><a th:href="@{/print/simples}" class="nav-link px-3"> <span class="me-2"> <i
+													class="bi bi-file-earmark text-white"></i>
+											</span> <span class="text-white">Baixar relatório</span>
+										</a></li>
+								</ul>
+							</div>
+						</li>
+					</div>
+
+
+
+					<div sec:authorize="hasRole('ROLE_USER')">
+						<li><a class="nav-link px-3 sidebar-link text-white" data-bs-toggle="collapse" href="#reserva">
+								<span class="me-2">
+									<i class="bi bi-receipt"></i>
+								</span> <span>Minhas pedidos</span> <span class="ms-auto"> <span class="right-icon"> <i
+											class="bi bi-chevron-down"></i>
+									</span>
+								</span>
+							</a>
+
+							<div class="collapse" id="reserva"
+								th:classappend=" ${#strings.startsWith(#request.requestURI, '/reserva')} ? show">
+								<ul class="navbar-nav ps-3">
+									<li><a th:href="@{/reserva/mostrarpedidosusuario}" class="nav-link px-3"> <span
+												class="me-2"> <i class="bi bi-search text-white"></i>
+											</span> <span class="text-white">Pesquisar</span>
+										</a></li>
+								</ul>
+							</div>
+						</li>
+					</div>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<!-- !offcanvas sidebar -->
+</body>
+
+</html>
